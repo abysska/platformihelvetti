@@ -9,9 +9,7 @@ public class coinspawner : MonoBehaviour
     public float timer = 0f;
     public bool hasCoin; 
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
   
-    // Update is called once per frame
     void Update()
     {
 

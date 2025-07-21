@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 24ce512b21e688540a4fe6acb7e3cc17, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1463,53 +1463,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1491429832985695105, guid: 69091013a69c9854b80f26b06b30ab58, type: 3}
   m_PrefabInstance: {fileID: 880045886}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &890110482
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 890110484}
-  - component: {fileID: 890110483}
-  m_Layer: 0
-  m_Name: Coinspawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &890110483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890110482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267ae9c71d20f6049bff1a17912fed21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coin: {fileID: 2113509466791595987, guid: d5cc4eadb8ae4fe4188f45f367fbe1c2, type: 3}
-  spawnRate: 1
-  heightOffset: 0
---- !u!4 &890110484
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 890110482}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.81, y: 2.03, z: -0.47657013}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &977883856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491429832985695105, guid: 69091013a69c9854b80f26b06b30ab58, type: 3}
@@ -1672,6 +1625,8 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 55
+  hasCoin: 0
+  Coinspawner: {fileID: 630774780047259957, guid: 85e9a2f23bf84ca4180e853e9cc932d0, type: 3}
 --- !u!1 &1019185567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2667,4 +2622,3 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1255694362}
   - {fileID: 1017319967}
-  - {fileID: 890110484}
