@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     private Rigidbody rigidbodyComponent;
     private bool isGrounded;
     private float speed = 2f;
-    
+    private int  superJumpsRemaining;
+    public bool hasCoin;
+    public GameObject Coinspawner;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,7 +51,16 @@ public class Player : MonoBehaviour
 
         if (jumpKeyWasPressed)
         {
-            rigidbodyComponent.AddForce(Vector3.up * 7, ForceMode.VelocityChange);
+            float jumpPower = 5;
+            if (superJumpsRemaining > 0)
+            {
+                jumpPower *= 2;
+                superJumpsRemaining--;
+            }
+            
+
+
+            rigidbodyComponent.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);
             jumpKeyWasPressed = false;
         }
       
@@ -79,4 +90,21 @@ public class Player : MonoBehaviour
     {
         isGrounded = false; 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+
+        {
+            Destroy(other.gameObject);
+            superJumpsRemaining++;
+
+            hasCoin = false;
+
+            Instantiate(Coinspawner, transform.position, Quaternion.identity);
+        }
+        
+
+    }
+
 }
