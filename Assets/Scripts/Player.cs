@@ -10,17 +10,23 @@ public class Player : MonoBehaviour
     private bool jumpKeyWasPressed;
     private float horizontalInput;
     private Rigidbody rigidbodyComponent;
+    private bool isGrounded;
+    private float speed = 2f;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidbodyComponent = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("update tapahtuu");
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
@@ -35,7 +41,8 @@ public class Player : MonoBehaviour
         rigidbodyComponent.linearVelocity = new Vector3(horizontalInput, rigidbodyComponent.linearVelocity.y, 0);
 
 
-        if (Physics.OverlapSphere(groundcheckTransform.position, 0.1f, playerMask).Length == 0) 
+
+        if (Physics.OverlapSphere(groundcheckTransform.position, 0.1f, playerMask).Length == 0)
         {
             return;
         }
@@ -43,11 +50,33 @@ public class Player : MonoBehaviour
         if (jumpKeyWasPressed)
         {
             rigidbodyComponent.AddForce(Vector3.up * 7, ForceMode.VelocityChange);
-            jumpKeyWasPressed = false; 
+            jumpKeyWasPressed = false;
         }
+      
+        
+        if (!isGrounded)
+        {
+            return;
+        }
+
+
+        Vector3 moveDirection = new Vector3(horizontalInput, 0).normalized;
+       transform.position += moveDirection * speed * Time.fixedDeltaTime;
+        
+
+
+
 
 
     }
 
-  
+    void OnCollisionEnter(Collision collision)
+    {
+        isGrounded = true;
+        
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false; 
+    }
 }
