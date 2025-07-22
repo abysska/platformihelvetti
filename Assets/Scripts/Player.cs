@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpKeyWasPressed = true;
+            AudioManager.Instance.PlaySFX("cat jump");
+
         }
         horizontalInput = Input.GetAxis("Horizontal");
         
@@ -41,8 +43,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         rigidbodyComponent.linearVelocity = new Vector3(horizontalInput, rigidbodyComponent.linearVelocity.y, 0);
-
-
+        
 
         if (Physics.OverlapSphere(groundcheckTransform.position, 0.1f, playerMask).Length == 0)
         {
@@ -58,6 +59,10 @@ public class Player : MonoBehaviour
                 superJumpsRemaining--;
             }
             
+            if (superJumpsRemaining > 1)
+            {
+                AudioManager.Instance.PlaySFX("cat super jump");
+            }
 
 
             rigidbodyComponent.AddForce(Vector3.up * jumpPower, ForceMode.VelocityChange);

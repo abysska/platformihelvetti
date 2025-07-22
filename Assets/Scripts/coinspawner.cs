@@ -7,9 +7,15 @@ public class coinspawner : MonoBehaviour
     public GameObject coin;
     public float spawnRate = 1;
     public float timer = 0f;
-    public bool hasCoin; 
-    
-  
+    public bool hasCoin;
+
+
+
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
 
@@ -28,6 +34,6 @@ public class coinspawner : MonoBehaviour
     void spawnCoin()
     {
         Instantiate(coin, transform.position, Quaternion.identity);
-
+        AudioManager.Instance.PlaySFX("collectible collected");
     }
 }
