@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    
+
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
@@ -49,22 +49,22 @@ public class AudioManager : MonoBehaviour
         {
             musicSource.clip = s.clip;
             musicSource.Play();
-        
+
         }
     }
 
     public void PlaySFX(string name)
-    { 
+    {
 
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
         if (s == null)
-        
+
         {
             Debug.Log("Sound not found");
 
         }
-       
+
         else
 
         {
@@ -72,7 +72,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void toggleMusic()
+    { 
+        musicSource.mute = !musicSource.mute; 
+    }
 
-  
+    public void toggleSfX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
 
+    public void MusicVolume(float volume) 
+    { 
+    musicSource.volume = volume;
+    }
+
+    public void SFXVolume(float volume)
+    { sfxSource.volume = volume; }
 }
